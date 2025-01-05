@@ -1,0 +1,266 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Weather App container */
+  .weather-app {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.5s ease;
+    position: relative; /* For positioning background elements */
+    overflow: hidden;
+  }
+  
+  /* Weather container */
+  .weather-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff5722;
+  }
+  
+  /* Input field */
+  .weather-container input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .weather-container input:focus {
+    border-color: #ff5722;
+  }
+  
+  /* Get Weather button */
+  .weather-button {
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .weather-button:hover {
+    background: linear-gradient(45deg, #ff7043, #d84315);
+    transform: scale(1.05);
+  }
+  
+  .weather-button:active {
+    background: #bf360c;
+    transform: scale(0.95);
+  }
+  
+  /* Weather Info */
+  .weather-info {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .city-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .weather-desc {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .weather-temp {
+    font-size: 18px;
+    color: #ff5722;
+    font-weight: bold;
+  }
+  
+  .weather-humidity,
+  .weather-wind {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Dynamic Weather Backgrounds with Elements */
+  
+  /* Default */
+  .default-weather {
+    background-color: #e0f7fa;
+  }
+  
+  /* Sunny */
+  .sunny-weather {
+    background: linear-gradient(to bottom, #ffe57f, #ff9800);
+    position: relative;
+  }
+  
+  .sunny-weather::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffeb3b, #f57f17);
+    border-radius: 50%;
+    animation: rotate-sun 10s linear infinite;
+  }
+  
+  @keyframes rotate-sun {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Cloudy */
+  .cloudy-weather {
+    background: linear-gradient(to bottom, #90a4ae, #b0bec5);
+    position: relative;
+  }
+  
+  .cloudy-weather::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 150px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: move-clouds 10s linear infinite;
+  }
+  
+  @keyframes move-clouds {
+    from {
+      transform: translateX(-200%);
+    }
+    to {
+      transform: translateX(200%);
+    }
+  }
+  
+  /* Rainy */
+.rainy-weather {
+    background: linear-gradient(to bottom, #4a90e2, #0d47a1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Multiple Raindrops */
+.rainy-weather::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent);
+    animation: rain-fall 1s linear infinite;
+}
+
+@keyframes rain-fall {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* Adding more raindrops with different size and speed */
+.rain {
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0.7;
+    animation: drop 0.8s linear infinite;
+}
+
+/* Create more raindrops */
+.rain:nth-child(1) { left: 10%; animation-duration: 1.5s; animation-delay: 0s; }
+.rain:nth-child(2) { left: 20%; animation-duration: 1.3s; animation-delay: 0.3s; }
+.rain:nth-child(3) { left: 30%; animation-duration: 1.7s; animation-delay: 0.5s; }
+.rain:nth-child(4) { left: 40%; animation-duration: 1.2s; animation-delay: 0.8s; }
+.rain:nth-child(5) { left: 50%; animation-duration: 1.4s; animation-delay: 1s; }
+.rain:nth-child(6) { left: 60%; animation-duration: 1.6s; animation-delay: 1.3s; }
+.rain:nth-child(7) { left: 70%; animation-duration: 1.8s; animation-delay: 1.5s; }
+.rain:nth-child(8) { left: 80%; animation-duration: 1.2s; animation-delay: 1.8s; }
+.rain:nth-child(9) { left: 90%; animation-duration: 1.5s; animation-delay: 2s; }
+
+/* Raindrop falling animation */
+@keyframes drop {
+    0% {
+        top: -15px;
+        opacity: 0.7;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+  
+  /* Snowy */
+  .snowy-weather {
+    background: linear-gradient(to bottom, #e3f2fd, #90caf9);
+    position: relative;
+  }
+  
+  .snowy-weather::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: snow-fall 1.5s linear infinite;
+  }
+  
+  @keyframes snow-fall {
+    from {
+      transform: translateY(-50%);
+    }
+    to {
+      transform: translateY(150%);
+    }
+  }
+  
